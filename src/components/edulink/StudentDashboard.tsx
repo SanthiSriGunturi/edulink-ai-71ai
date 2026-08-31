@@ -41,7 +41,7 @@ import {
 import { internships, student, targetRoles } from "@/data/edulink";
 
 export function StudentDashboard({ query }: { query: string }) {
-  const [roleId, setRoleId] = useState(targetRoles[0].id);
+  const [roleId, setRoleId] = useState(targetRoles[0]!.id);
   const [bridgeOpen, setBridgeOpen] = useState(false);
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [applyFor, setApplyFor] = useState<(typeof internships)[number] | null>(null);

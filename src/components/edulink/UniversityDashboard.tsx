@@ -40,7 +40,7 @@ export function UniversityDashboard({ query }: { query: string }) {
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {kpis.map((k, i) => {
-          const Icon = icons[i];
+          const Icon = icons[i] ?? GraduationCap;
           return (
             <Card key={k.label}>
               <CardHeader className="pb-2">

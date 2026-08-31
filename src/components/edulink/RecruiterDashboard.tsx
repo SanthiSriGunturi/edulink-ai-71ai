@@ -178,7 +178,7 @@ export function RecruiterDashboard({ query }: { query: string }) {
             <Label>Minimum match: {minMatch}%</Label>
             <Slider
               value={[minMatch]}
-              onValueChange={(v) => setMinMatch(v[0])}
+              onValueChange={(v) => setMinMatch(v[0] ?? 60)}
               min={50}
               max={100}
               step={1}
