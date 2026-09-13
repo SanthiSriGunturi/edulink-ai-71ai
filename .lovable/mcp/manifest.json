@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "sdk_version": "2.0.4",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "edulink-ai-connect",
+      "version": "0.1.0",
+      "title": "EduLink AI Connect"
+    },
+    "tools": [
+      {
+        "name": "list_internships",
+        "title": "List internships",
+        "description": "List verified internship and placement openings, optionally filtered by skill, location text, or minimum match percentage.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "skill": {
+              "description": "Filter by a required skill, e.g. 'React'.",
+              "type": "string"
+            },
+            "location": {
+              "description": "Filter by location text, e.g. 'Jharkhand'.",
+              "type": "string"
+            },
+            "minMatch": {
+              "description": "Minimum compatibility match percentage (0-100).",
+              "type": "number"
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "analyze_skill_gap",
+        "title": "Analyze skill gap",
+        "description": "Compare the demo student's current skill proficiency against industry demand for a target role, and return missing skills plus recommended micro-courses.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "targetRole": {
+              "type": "string",
+              "description": "Target role id or label, e.g. 'fullstack', 'data', 'Cloud / DevOps Engineer'."
+            }
+          },
+          "required": [
+            "targetRole"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "search_candidates",
+        "title": "Search candidates",
+        "description": "Search the demo candidate pool by skill, minimum AI match score, DigiLocker verification, or university tier.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "skill": {
+              "description": "Filter by a verified skill, e.g. 'Docker'.",
+              "type": "string"
+            },
+            "minMatch": {
+              "description": "Minimum AI match score (0-100).",
+              "type": "number"
+            },
+            "verifiedOnly": {
+              "description": "Only DigiLocker-verified candidates.",
+              "type": "boolean"
+            },
+            "tier": {
+              "description": "University tier, e.g. 'Tier 1'.",
+              "type": "string"
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "university_insights",
+        "title": "University insights",
+        "description": "Return the university placement KPIs, regional skill-deficit table, and AI syllabus optimization recommendations.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
